@@ -32,3 +32,31 @@ Bem vindo a este repositório! Aqui você vai encontrar códigos de referentes a
   <img src="https://github.com/mariaelisaoctaviano/Machine-Learning-Developer-Test/blob/main/images/metrics.png"/>
 </p>
 
+# Passos para executar o código
+
+## Sem o docker
+1. Clone o repositório
+2. Instale as dependências
+```bash
+pip install -r requirements.txt
+```
+3. Execute o arquivo main.py
+```bash
+python main.py
+```
+
+## Com o docker
+1. Clone o repositório
+2. Crie a imagem
+```bash
+docker build -t ml-dev-test .
+```
+3. Execute o container
+```bash
+docker run -v ./data:/app/data ml-dev-test
+```
+
+# Requisitos
+- Python 3.11
+- pip
+- Docker (opcional)
