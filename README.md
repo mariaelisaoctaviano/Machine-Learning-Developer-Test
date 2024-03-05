@@ -43,6 +43,9 @@ pip install -r requirements.txt
 3. Execute o arquivo main.py
 ```bash
 python main.py
+4. Executando os testes
+```bash
+python -m unittest discover -s tests -p "*_test.py"
 ```
 
 ## Com o docker
@@ -55,6 +58,9 @@ docker build -t ml-dev-test .
 ```bash
 docker run -v ./data:/app/data ml-dev-test
 ```
+Obs:
+  - O volume é montado para que os dados possam ser acessados pelo container
+  - Os testes são executados na montagem da imagem
 
 # Requisitos
 - Python 3.11
