@@ -87,7 +87,8 @@ def plot_tsne(embeddings_tsne, labels):
     plt.xlabel('Componente 1')
     plt.ylabel('Componente 2')
     plt.legend()
-    plt.show()
+    plt.savefig("data/plot_tsne.png")
+    plt.close()
 
 def perform_kfold_validation(X, y, n_splits=10):
     kf = KFold(n_splits=n_splits, shuffle=True, random_state=42)
@@ -115,13 +116,16 @@ def perform_kfold_validation(X, y, n_splits=10):
     return true_labels, predicted_labels_cosine, predicted_labels_euclidean
 
 def plot_confusion_matrix(true_labels, predicted_labels, title):
+    title_changed = title.replace(" ", "_").lower()
+    path_file = "data/plot_confusion_matrix_" + title_changed + ".png"
     cm = confusion_matrix(true_labels, predicted_labels)
     plt.figure(figsize=(10, 8))
     sns.heatmap(cm, annot=True, fmt="d")
     plt.title(title)
     plt.ylabel('Actual Labels')
     plt.xlabel('Predicted Labels')
-    plt.show()
+    plt.savefig(path_file)
+    plt.close()
 
 def calculate_metrics(y_true, y_pred):
     accuracy = accuracy_score(y_true, y_pred)
@@ -209,4 +213,6 @@ def plot_comparison_roc(micro_fpr_cos, mean_micro_tpr_cos, mean_micro_auc_cos,
     plt.ylabel('True Positive Rate')
     plt.title('ROC Comparison - Cosine vs Euclidean Distances')
     plt.legend(loc="lower right")
-    plt.show()
+    plt.savefig("data/plot_comparison_roc.png")
+    plt.close()
+
